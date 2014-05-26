@@ -1,0 +1,58 @@
+<#include "/user/_layout.html"/>
+<@layout>
+<style>
+.unread{
+	color: black;
+}
+</style>
+				<div id="left-content">
+					<div>
+						<table class="table table-striped">
+							<thead>
+							<tr>
+								<th>保险受理通知 <a href="/user/messageList?type=1" class="pull-right">（查看全部消息）</a></th>
+							</tr>
+							</thead>
+							<tbody>
+							<#if (pageMsgs.list?size > 0)>
+							<#list pageMsgs.list as msg>
+							<tr>
+								<td class="unread">
+									${msg.title}<a href="/user/messageDetail?msgid=${msg.id}">（查看）</a>	
+								</td>
+							</tr>
+							</#list>
+							<#else>
+							<tr>
+								<td>
+									您没有收到新的保险受理通知	
+								</td>
+							</tr>
+							</#if>
+							</tbody>
+						</table>
+						<#include "/user/_paginate.html" />
+						<@paginate currentPage=pageMsgs.pageNumber totalPage=pageMsgs.totalPage actionUrl="user/messageList/" />
+					</div>
+					
+					<div>
+						<table class="table table-striped">
+							<thead>
+							<tr>
+								<th>理赔受理通知 <a href="/user/messageList?type=2" class="pull-right">（查看全部消息）</a></th>
+							</tr>
+							</thead>
+						</table>
+					</div>
+					
+					<div>
+						<table class="table table-striped">
+							<thead>
+							<tr>
+								<th>系统消息 <a href="/user/messageList?type=3" class="pull-right">（查看全部消息）</a></th>
+							</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+</@layout>

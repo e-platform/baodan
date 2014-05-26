@@ -1,0 +1,93 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-image: url("/images/furley_bg.png");
+  background-repeat: repeat;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.nav-pills > li{
+  width:200px;
+  text-align:center;
+  padding-right: 50px;
+}
+#title{
+	margin-bottom: 50px;
+	margin-left: -15px;
+	margin-right: -15px;
+	text-align: center;
+}
+#left-content{
+	padding-top: 20px;
+	margin-left: -15px;
+}
+#left-head{
+	margin-left: -15px;
+}
+
+.block-heading {
+  display: block;
+  font-weight: bold;
+  color: #333;
+  text-shadow: 1px 1px 1px #fff;
+  background: #dddddd;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #dddddd), color-stop(1, #ffffff));
+  background: -ms-linear-gradient(bottom, #dddddd, #ffffff);
+  background: -moz-linear-gradient(center bottom, #dddddd 0%, #ffffff 100%);
+  background: -o-linear-gradient(bottom, #dddddd, #ffffff);
+  filter: none;
+  filter: progid:dximagetransform.microsoft.gradient(startColorStr='#444444', EndColorStr='#555555');
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff',EndColorStr='#dddddd')";
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+  -webkit-border-top-left-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 0px;
+  -moz-border-radius-bottomleft: 0px;
+  -moz-border-radius-topleft: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 3px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border-bottom: 1px solid #aaa;
+  font-size: 1em;
+  line-height: 3em;
+  text-transform: none;
+  padding: 0em .75em;
+  margin-bottom: 0px;
+}
+.block {
+  margin-bottom: 1em;
+  border: 1px solid #ccc;
+  background: white;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-box-shadow: 0px 1px 0px #ffffff;
+  -moz-box-shadow: 0px 1px 0px #ffffff;
+  box-shadow: 0px 1px 0px #ffffff;
+}
+.select-all{
+	height:32px;
+}
+.col-sm-2.select-all {
+	padding-left: 22px;
+}
+
+.pager{
+	margin:0px;
+}
+/*登录*/
+.loginBox{
+	width:420px;height:230px;padding:20px 20px;border:1px solid #fff; color:#000; margin-top:40px; border-radius:8px;background: white;box-shadow:0 0 15px #222; background: -moz-linear-gradient(top, #fff, #efefef 8%);background: -webkit-gradient(linear, 0 0, 0 100%, from(#f6f6f6), to(#f4f4f4));font:11px/1.5em 'Microsoft YaHei' ;position: absolute;left:50%;top:50%;margin-left:-210px;margin-top:-115px;}
+

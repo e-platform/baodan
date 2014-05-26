@@ -1,0 +1,18 @@
+<#include "/user/_bd-form-zhx.html">
+<#include "/user/_bd-form-zrx.html">
+<script>
+$(function(){
+	
+	$(".print").click(function(){
+		
+		var headElements = '';
+
+        var options = { mode : "iframe", popClose : false, extraCss : "", retainAttr : ["class","id","style"], extraHead : headElements };
+
+        $( "form" ).printArea( options );
+		
+	});
+	
+});
+</script>
+<input type="button" class="print" value="打印 "/>

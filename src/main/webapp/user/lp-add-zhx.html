@@ -1,0 +1,28 @@
+<#include "/user/_layout.html"/>
+<@layout>
+				<script>
+				$(function(){
+					$("input").attr("disabled",true);
+				});
+				</script>
+				<div id="left-content">
+						
+					<div class="well well-sm">
+					<form class="well well-sm form-inline" action="/user/lpAddZHX">
+						<span>选择投保单</span>
+						<select class="form-control">
+						  <option>NO.1001-财产保险综合险-投保单-邢增龙</option>
+						  <option>NO.1002-公众责任保险（A）-投保单-邢增龙</option>
+						</select>
+						<button type="submit" class="btn btn-primary btn-sm">创建</button>
+					</form>
+					</div>
+					
+					<div>
+						<#include "/user/_bd-form.html"/>
+						
+						<a href="#">返回保单受理通知</a>
+					</div>
+					
+				</div>
+</@layout>

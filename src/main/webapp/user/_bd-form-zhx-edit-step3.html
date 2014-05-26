@@ -1,0 +1,195 @@
+<#if type=="zhx" && opt=="edit" && step=="3">
+
+<style type="text/css">
+input[type="text"] {
+border-left-width: 0px;
+border-top-width: 0px;
+border-right-width: 0px;
+border-bottom-color: #0E0E0F;
+border-bottom-width: 1px;
+width:200px;
+}
+</style>
+
+						<p>step3<h3 style="text-align:center; margin-bottom:16px;">财产保险综合险 No.</h3></p>
+						<p>尊敬的投保人：请您在投保前务必详细阅读相关保险条款，特别注意责任免除、投保人及被保险人义务、赔偿处理等内容，据实回答保险人就投保事项提出的相关询问，并用蓝色或黑色墨水笔如实填写投保单。投保后相关内容若发生变动，请及时通知保险人。</p>
+						<form class="well form-inline" action="/user/bdSave" method="post">
+						<table class="table table-striped table-bordered table-condensed">
+							<tr>
+								<table class="table">
+									<tr>
+										<td>1.</td>
+										<td colspan="3">投保人信息</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td colspan="3">名称：<input type="text"/></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>联系人地址：<input type="text"/></td>
+										<td>联系电话：<input type="text"/></td>
+										<td>邮政编码：<input type="text"/></td>
+									</tr>
+								</table>
+							</tr>
+							<tr>
+								<table class="table">
+									<tr>
+										<td>2.</td>
+										<td colspan="3">被保险人基本信息</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td colspan="3">名称：<input type="text"/></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>联系人地址：<input type="text"/></td>
+										<td colspan="2">所在流域：<input type="text"/></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>组织机构代码：<input type="text"/></td>
+										<td>联系电话：<input type="text"/></td>
+										<td>联系人：<input type="text"/></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>装机容量：<input type="text"/></td>
+										<td colspan="2">是否有库容：<input type="checkbox"/>无<input type="checkbox"/>有（容量为<input type="text"/>）</td>
+									</tr>
+								</table>
+							</tr>
+							<tr>
+								<table class="table">
+									<tr>
+										<td>3.</td>
+										<td colspan="3">被保险人资产及营业额状况</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>注册资本：<input type="text"/></td>
+										<td>总资产：<input type="text"/></td>
+										<td>上一年度实际营业额：<input type="text"/></td>
+									</tr>
+								</table>
+							</tr>
+							<tr>
+								<table class="table">
+									<tr>
+										<td>4.</td>
+										<td>投保主险险种：</td>
+										<td colspan="2"><input type="checkbox"/>基本险 <input type="checkbox"/>综合险 <input type="checkbox"/>一切险</td>
+									</tr>
+								</table>
+							</tr>
+							<tr>
+								<table class="table">
+									<tr>
+										<td>5.</td>
+										<td colspan="3">有关保险标的投保信息，请见《财产保险标的项目投保单》；有关附加条款投保信息，请见《财产保险附加条款投保清单》。</td>
+									</tr>
+								</table>
+							</tr>
+							<tr>
+								<table class="table">
+									<tr>
+										<td>6.</td>
+										<td colspan="3">保险标的地址<input type="text"/></td>
+									</tr>
+								</table>
+							</tr>
+							<tr>
+								<table class="table">
+									<tr>
+										<td>7.</td>
+										<td colspan="3">免赔额：<input type="text"/></td>
+									</tr>
+								</table>
+							</tr>
+							<tr>
+								<table class="table">
+									<tr>
+										<td>8.</td>
+										<td colspan="3">其他保险说明<input type="text"/></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td colspan="3">是否有其他有关保险合同？<input type="checkbox"/>无<input type="checkbox"/>有</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td colspan="3">如有，请说明标的项目、保险金额、免赔额、保险公司名称以及其他相关信息：<input type="text"/></td>
+									</tr>
+								</table>
+							</tr>
+							<tr>
+								<table class="table">
+									<tr>
+										<td>9.</td>
+										<td colspan="2">总保险金额（大写）：<input type="text"/></td>
+										<td>（小写）  <input type="text"/></td>
+									</tr>
+								</table>
+							</tr>
+							<tr>
+								<table class="table">
+									<tr>
+										<td>10.</td>
+										<td colspan="2">总保险费（大写）：<input type="text"/></td>
+										<td>（小写）  <input type="text"/></td>
+									</tr>
+								</table>
+							</tr>
+							<tr>
+								<table class="table">
+									<tr>
+										<td>11.</td>
+										<td colspan="3">保险期间： 12 个月，自<input type="text"/>年<input type="text"/>月<input type="text"/>日零时起，至<input type="text"/>年<input type="text"/>月<input type="text"/>日二十四时止。</td>
+									</tr>
+								</table>
+							</tr>
+							<tr>
+								<table class="table">
+									<tr>
+										<td>12.</td>
+										<td colspan="3">保险费交付时间：<input type="text"/>年<input type="text"/>月<input type="text"/>日    </td>
+									</tr>
+								</table>
+							</tr>
+							<tr>
+								<table class="table">
+									<tr>
+										<td>13.</td>
+										<td colspan="3">保险合同争议解决方式选择：<input type="checkbox"/>提交<input type="text"/>仲裁委员会仲裁；      诉讼</td>
+									</tr>
+								</table>
+							</tr>
+							<tr>
+								<table class="table">
+									<tr>
+										<td>14.</td>
+										<td colspan="3">特别约定</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td colspan="3">详见附件1特别约定。</td>
+									</tr>
+								</table>
+							</tr>
+							
+						</table>
+						<div class="well well-sm">
+							<h6><strong>投保单附加细则</strong><a href="#" class="pull-right">添加</a></h6>
+							<ul class="list-group">
+							  <li class="list-group-item">XXX投保单附加细则.txt <a href="#">下载</a></li>
+							  <li class="list-group-item">XXX投保单附加细则.txt <a href="#">下载</a></li>
+							</ul>
+						</div>
+						<input type="hidden" name="type" value="${type}"/>
+						<input type="hidden" name="opt" value="${opt}"/>
+						<input type="hidden" name="step" value="${step}"/>
+						<button type="submit" class="btn btn-primary btn-sm pull-right">下一步</button>
+						</form>
+</#if>						
