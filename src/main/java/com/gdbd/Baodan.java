@@ -1,7 +1,6 @@
 package com.gdbd;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,10 +48,10 @@ public class Baodan extends Model<Baodan> {
 						String[] values = new String[]{"","","",""};
 						String[] vals = entry.getValue().toString().split("_");
 						System.arraycopy(vals, 0, values, 0, vals.length);
-						String formItemType = values[0];
-						String formItemName = values[1];
-						String formItemValid = values[2];
-						String formItemValue = values[3];
+						String formItemType = values[0];//元素类型
+						String formItemName = values[1];//元素名称
+						String formItemValid = values[2];//正则表达式
+						String formItemValue = values[3];//值
 						map.put(formItemName, genFormElement(viewType,formItemType,fieldName,formItemValue,formItemValid,formItemName));
 					}
 				}

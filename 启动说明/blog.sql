@@ -1,6 +1,6 @@
-CREATE DATABASE jfinal_demo;
+CREATE DATABASE baodan;
 
-USE jfinal_demo;
+USE baodan;
 
 CREATE TABLE `blog` (
   `id` int(11) NOT NULL auto_increment,
@@ -47,12 +47,12 @@ CREATE TABLE `baodan`(
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`code` varchar(200) NOT NULL,  /*保单编号 0为保单模板*/
 	`name` varchar(200) NOT NULL,
-	`status` int(2) NOT NULL,
-	`sbjine` int(20) NOT NULL,
+	`status` int(2) NOT NULL,/*待审批，审批通过，审批未通过*/
+	`sbjine` int(20) NOT NULL,/*涉保金额*/
 	`eff_date` timestamp NOT NULL,
 	`exp_date` timestamp NOT NULL,
 	`create_time` timestamp NOT NULL,
-	`type` int(11) NOT NULL,
+	`type` int(11) NOT NULL,/*险种*/
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /**表单项*/
@@ -61,7 +61,7 @@ CREATE TABLE `form_item`(
 	`baodan_id` int(11) NOT NULL,
 	`type` varchar(200) NOT NULL,  /*综合保险主表单  附加表单 */
 	`is_mult` int(1) NOT NULL, 		/*多值字段 1:多值 0：单值*/
-	`field_1` varchar(200),  /*field_1_text_name_value*/
+	`field_1` varchar(200),  /*input_name_regex_value*/
 	`field_2` varchar(200),
 	`field_3` varchar(200),
 	`field_4` varchar(200),

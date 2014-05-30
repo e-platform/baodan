@@ -1,6 +1,7 @@
 package com.gdbd;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +27,8 @@ public class UserController extends BaseController{
 	static{
 		stepMap.put("zhx", 3);
 	}
+	
+	private static SimpleDateFormat dateformat = new SimpleDateFormat("yyyyMMddHHmmss");
 	
 	@Override
 	public void index() {
@@ -143,6 +146,7 @@ public class UserController extends BaseController{
 	}
 	
 	public void bdAdd(){
+		//type: zhx,zrx code:0 (模板) step:填写步骤 opt:add,edit,view
 		setAttr("type", getPara("type","")).setAttr("opt", getPara("opt","")).setAttr("step", getPara("step",""));
 		//查询保单模板，生成表单页面显示项
 		if(!getPara("type","").equals("")){
@@ -154,8 +158,20 @@ public class UserController extends BaseController{
 	}
 	
 	public void bdSave(){
+		Baodan baodan = null;
+		if(getPara("baodanId","").equals("")){
+			baodan = new Baodan();
+			baodan.set("code", getPara("type") + "-" + ((User)getSessionAttr("user")).getStr("name")+ "-" +dateformat.format(new Date()));
+			baodan.save();
+		}else{
+			baodan = Baodan.dao.findById(getPara("baodanId"));
+		}
+		
+		//保存表单项
+		List<FormItem> formItems = null;
+		FormItem.dao.saveBeans(formItems);
 		//判断是否所有表单都已填写
-		// if baodan.id == null new Baodan().save();
+		
 		//new FormItem().setbaodanid().setvalue().save();
 		//paraMap  formItems for each save or update
 		if(getParaToInt("step") < stepMap.get(getPara("type")).intValue()){
