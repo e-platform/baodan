@@ -28,6 +28,10 @@ public class Baodan extends Model<Baodan> {
 		return  FormItem.dao.find("select * from form_item where baodan_id=?",get("id"));
 	}
 	
+	/** 生成保单的表单项，生成结构为按表单类型组成的Map <form-type,List<Map<elemName,elemValue>>>
+	 * 	单值表单list中只有一个元素，多值时有过个元素
+	 * 
+	 * */
 	public Map<String,List<Map<String,String>>> genFormMap(String viewType){
 		Map<String,List<Map<String,String>>> result = new HashMap<String, List<Map<String,String>>>();
 		List<FormItem> formItems = getFormItems();

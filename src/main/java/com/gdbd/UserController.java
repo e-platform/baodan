@@ -154,6 +154,20 @@ public class UserController extends BaseController{
 	}
 	
 	public void bdSave(){
+		
+		if(getPara("baodanId", "").equals("")){
+			Baodan baodan = new Baodan();
+			baodan.set("type", type);
+			baodan.set("name", name);
+			baodan.set("code", code);
+			baodan.set("status", value);
+			baodan.set("sbjine", sbjine);
+			baodan.save();
+		}else{
+			
+		}
+		
+		
 		//判断是否所有表单都已填写
 		// if baodan.id == null new Baodan().save();
 		//new FormItem().setbaodanid().setvalue().save();
