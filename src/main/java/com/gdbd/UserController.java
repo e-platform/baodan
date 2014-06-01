@@ -155,8 +155,10 @@ public class UserController extends BaseController{
 	
 	public void bdSave(){
 		
+		//检查保单ID是否存在
+		Baodan baodan = null;
 		if(getPara("baodanId", "").equals("")){
-			Baodan baodan = new Baodan();
+			baodan = new Baodan();
 			baodan.set("type", type);
 			baodan.set("name", name);
 			baodan.set("code", code);
@@ -164,22 +166,31 @@ public class UserController extends BaseController{
 			baodan.set("sbjine", sbjine);
 			baodan.save();
 		}else{
-			
+			baodan = Baodan.dao.findById(getParaToInt("baodanId"));
 		}
 		
+		//保存保单表单项
+		FormItem formItem = genFormItem(getParaMap());
+		formItem.set("baodan_id", baodan.getInt("id"));
+		formItem.save();
 		
 		//判断是否所有表单都已填写
-		// if baodan.id == null new Baodan().save();
-		//new FormItem().setbaodanid().setvalue().save();
-		//paraMap  formItems for each save or update
 		if(getParaToInt("step") < stepMap.get(getPara("type")).intValue()){
 			//否，跳转下一步 判断险种，加载需要填写的表单
 			setAttr("type", getPara("type")).setAttr("opt", getPara("opt")).setAttr("step", (Integer.parseInt(getPara("step")) + 1)+"");
+			Baodan baodanTemplate = Baodan.dao.getTemplate(BAODAN_TYPE_MAP.get(getPara("type")));
+			Map map = baodanTemplate.genFormMap("add");//Map<"add",List<Map<${name},"<input/>">>>;
+			setAttr("list",map.get(getPara("type")));
 			render("/user/bd-add.html");
 		}else{
 			//是，提示已保单提交成功，跳转到保单列表页面
 			
 		}
+		
+		
+		// if baodan.id == null new Baodan().save();
+		//new FormItem().setbaodanid().setvalue().save();
+		//paraMap  formItems for each save or update
 		
 	}
 	
