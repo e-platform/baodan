@@ -19,6 +19,10 @@ public class BDInterceptor implements Interceptor {
 		activeMenuMap.put("messageDetail", 0);
 		activeMenuMap.put("messageList", 0);
 		activeMenuMap.put("bdQuery", 1);
+		activeMenuMap.put("bdView", 1);
+		activeMenuMap.put("bdDelete", 1);
+		activeMenuMap.put("bdEdit", 1);
+		activeMenuMap.put("bdUpdate", 1);
 		activeMenuMap.put("bdAdd", 2);
 		activeMenuMap.put("bdSave", 2);
 		activeMenuMap.put("lpAdd", 3);

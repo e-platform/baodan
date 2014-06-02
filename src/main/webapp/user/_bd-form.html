@@ -1,5 +1,8 @@
+<form class="well form-inline" action='<#if opt="add">/user/bdSave<#elseif opt="edit">/user/bdUpdate<#else>#</#if>' method="post">
 <#include "/user/_bd-form-zhx.html">
 <#include "/user/_bd-form-zrx.html">
+<input name="baodanId" value='${baodanId!""}'/>
+</form>
 <script>
 $(function(){
 	

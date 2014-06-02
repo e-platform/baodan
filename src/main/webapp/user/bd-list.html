@@ -23,20 +23,22 @@
 							<thead>
 						    <tr>
 						      <th>编号</th>
-						      <th>保单名称</th>
 						      <th>保单状态</th>
 						      <th>社保金额</th>
 						      <th>有效时间</th>
+						      <th>操作</th>
 						    </tr>
 						  </thead>
 						  <tbody>
+						 	<#list baodans.list as baodan>
 						    <tr>
-						      <td>编号</td>
-						      <td>保单名称</td>
-						      <td>保单状态</td>
-						      <td>社保金额</td>
-						      <td>有效时间</td>
+						      <td><a href="/user/bdView?baodanId=${baodan.id}">${baodan.code}</a></td>
+						      <td>${baodan.status}</td>
+						      <td>${baodan.sbjine}</td>
+						      <td>${baodan.effDate!}-${baodan.expDate!}</td>
+						      <td><a href="/user/bdEdit?baodanId=${baodan.id}">编辑</a>&nbsp;<a href="/user/bdDelete?baodanId=${baodan.id}">删除</a></td>
 						    </tr>
+						    </#list>
 						  </tbody>
 						</table>
 					</div>

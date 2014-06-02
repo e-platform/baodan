@@ -1,4 +1,4 @@
-<#if type=="zhx" && opt=="edit" && step=="1">
+<#if type==1 && step=="1">
 <#list list as map>
 <style type="text/css">
 input[type="text"] {
@@ -13,7 +13,6 @@ width:200px;
 
 						<p>step1<h3 style="text-align:center; margin-bottom:16px;">财产保险综合险 No.</h3></p>
 						<p>尊敬的投保人：请您在投保前务必详细阅读相关保险条款，特别注意责任免除、投保人及被保险人义务、赔偿处理等内容，据实回答保险人就投保事项提出的相关询问，并用蓝色或黑色墨水笔如实填写投保单。投保后相关内容若发生变动，请及时通知保险人。</p>
-						<form class="well form-inline" action="/user/bdSave" method="post">
 						<table class="table table-striped table-bordered table-condensed">
 							<tr>
 								<table class="table">
@@ -23,7 +22,7 @@ width:200px;
 									</tr>
 									<tr>
 										<td></td>
-										<td colspan="3">名称：${map.name}</td>
+										<td colspan="3">名称：${map.name}${map.id}</td>
 									</tr>
 									<tr>
 										<td></td>
@@ -191,6 +190,5 @@ width:200px;
 						<input type="hidden" name="type" value="${type}"/>
 						<input type="hidden" name="opt" value="${opt}"/>
 						<input type="hidden" name="step" value="${step}"/>
-						</form>
 </#list>
 </#if>						
