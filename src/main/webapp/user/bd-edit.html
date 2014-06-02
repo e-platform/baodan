@@ -1,0 +1,27 @@
+<#include "/user/_layout.html"/>
+<@layout>
+				<div id="left-content">
+						
+					<div class="well well-sm">
+					<form class="well well-sm form-inline" action="/user/bdAdd?opt=edit" method="post">
+						<span>选择投保单类型：</span>
+						<select class="form-control">
+						  <option>财产保险</option>
+						  <option>公共责任险</option>
+						</select>
+						<select class="form-control" name="type">
+						  <option value="zhx">综合险</option>
+						  <option value="zrx">责任险</option>
+						</select>
+						<input type="hidden" name="step" value="1"/>
+						<button type="submit" class="btn btn-primary btn-sm">创建</button>
+					</form>
+					</div>
+					<!-- 保单表单区域宏定义 引入表单宏 传递表单参数，动态加载表单 -->
+					<#include "/user/_bd-form.html"/>
+					<div>
+						<a href="#">返回保单受理通知</a>
+					</div>
+					
+				</div>
+</@layout>
