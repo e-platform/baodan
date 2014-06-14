@@ -5,8 +5,12 @@ import com.jfinal.plugin.activerecord.Page;
 
 public class User extends Model<User> {
 	
-	public static int RECORD_STATUS_COMMON = 0;			//记录状态 正常
-	public static int RECORD_STATUS_DEL = 1;			//记录状态 已删除
+	/** 普通用户角色 */
+	public static final int ROLE_USER = 0;
+	/** 管理员角色*/
+	public static final int ROLE_ADMIN = 1;
+	/** 超级管理员*/
+	public static final int ROLE_SUPPER_ADMIN = 2;
 
 	public static final User dao = new User();
 	
@@ -16,6 +20,6 @@ public class User extends Model<User> {
 	
 	/** 登录 */
 	public User login(String account, String passwd){
-		return findFirst("select * from user where account=? and passwd=? and record_status=?", account,passwd,RECORD_STATUS_COMMON);
+		return findFirst("select * from user where account=? and passwd=? and record_status=?", account,passwd,Constants.RECORD_STATUS_COMMON);
 	}
 }

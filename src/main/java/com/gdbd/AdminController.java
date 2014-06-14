@@ -5,39 +5,6 @@ import com.jfinal.aop.Before;
 
 @Before(BDInterceptor.class)
 public class AdminController extends BaseController {
-	@Override
-	public void index() {
-//		setAttr("blogPage", Blog.dao.paginate(getParaToInt(0, 1), 10));
-//		render("blog.html");
-	}
-	
-	@Override
-	public void add() {
-	}
-	
-	@Override
-	public void save() {
-//		getModel(Blog.class).save();
-//		redirect("/blog");
-	}
-	
-	@Override
-	public void edit() {
-//		setAttr("blog", Blog.dao.findById(getParaToInt()));
-	}
-	
-	@Override
-	public void update() {
-//		getModel(Blog.class).update();
-//		redirect("/blog");
-	}
-	
-	@Override
-	public void delete() {
-//		Blog.dao.deleteById(getParaToInt());
-//		redirect("/blog");
-	}
-	
 	/**
 	 * method:
 	 * 		1、message()		//首页消息
@@ -56,6 +23,56 @@ public class AdminController extends BaseController {
 	 * 		14、settingUpdateUser()	//设置更新一个用户
 	 * 
 	 */
+	
+	/** 管理员首页 */
+	public void index(){
+		redirect("/message/indexAdmin");
+	}
+	
+	/** 数据统计 */
+	public void statisticalChart(){
+		
+	}
+	
+	/** 设置管理 */
+	public void setting(){
+		
+	}
+	
+	/** 添加一个用户 */
+	public void settingAddUser(){
+		
+	}
+	
+	/** 保存一个用户 */
+	public void settingSaveUser(){
+		
+	}
+	
+	/** 编辑一个用户 */
+	public void settingEditUser(){
+		
+	}
+	
+	/** 更新一个用户 */
+	public void settingUpdateUser(){
+		
+	}
+	
+	/** 删除一个用户 */
+	public void settingRemoveUser(){
+		
+	}
+	
+	/** 保单审批 */
+	public void approveBd(){
+		
+	}
+	
+	/** 审批保存 */
+	public void approveBdSave(){
+		
+	}
 }
 
 

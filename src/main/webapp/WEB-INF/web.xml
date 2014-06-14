@@ -778,7 +778,7 @@ standard deployment descriptor.
     <filter-class>com.jfinal.core.JFinalFilter</filter-class>
     <init-param>
       <javaee:param-name>configClass</javaee:param-name>
-      <javaee:param-value>com.demo.common.DemoConfig</javaee:param-value>
+      <javaee:param-value>com.gdbd.common.BDConfig</javaee:param-value>
     </init-param>
   </filter>
   <filter-mapping>

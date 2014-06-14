@@ -1,0 +1,234 @@
+<#include "/user/_layout.html"/>
+<@layout>
+
+				<div id="left-content">
+						
+					<div class="well well-sm">
+						<span>选择投保单类型：财产保险>公共责任险</span>
+					</div>
+					
+<style type="text/css">
+input[type="text"] {
+border-left-width: 0px;
+border-top-width: 0px;
+border-right-width: 0px;
+border-bottom-color: #0E0E0F;
+border-bottom-width: 1px;
+width:200px;
+}
+</style>
+<form class="well form-inline" action='/zrxbaodan/majorFormSave' method="post">
+						<p style="margin-left: 6px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;尊敬的投保人：请您在投保前务必详细阅读相关保险条款，特别注意责任免除、投保人及被保险人义务、赔偿处理等内容，据实回答保险人就投保事项提出的相关询问，并用蓝色或黑色墨水笔如实填写投保单。投保后相关内容若发生变动，请及时通知保险人。</p>
+						<table class="table table-striped table-bordered table-condensed" vertical-align:middle;" >
+							<tr>
+								<td>投保人名称</td>
+								<td></td>	
+								<td>联系人和电话</td>	
+								<td></td>	
+								<td></td>	
+							</tr>
+							<tr>
+								<td >投保人联系地址</td>
+								<td ></td>
+								<td >电子邮箱</td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td >被保险人名称</td>
+								<td ></td>
+								<td >联系人和电话</td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td >被保险人地址</td>
+								<td ></td>
+								<td >组织机构代码</td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td >营业处所地址</td>
+								<td ></td>
+								<td >营业性质</td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td >是否有库容</td>
+								<td ><input type="checkbox"/>无、<input type="checkbox"/>有（容量为       ）</td>
+								<td >装机容量</td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td >营业外所座落地址</td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td >投保区域范围</td>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td >行业类别</td>
+								<td >电力、热力、燃气、石油及水的生产和供应业 </td>
+								<td ></td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td rowspan="7">主险</td>
+							</tr>
+							<tr>
+								<td >累计赔偿限额：  </td>
+								<td > （小写） </td>
+								<td ></td>
+								<td ></td>
+							</tr>
+							<tr>
+								<td >每次事故赔偿限额：  </td>
+								<td >（小写）</td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td >其中：每人人身伤亡赔偿限额:</td>
+								<td >（小写） </td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td >每次事故绝对免赔额：</td>
+								<td ></td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td >保险费率（‰）： </td>
+								<td ></td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td >保险费： </td>
+								<td ></td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td rowspan="10">附加险</td>
+								<td >名称</td>
+								<td >赔偿限额（元）</td>
+								<td >保险费（元）</td>
+								<td >保险费率（‰）</td>	
+							</tr>
+							<tr>
+								<td ><input type="checkbox"/>农责险</td>
+								<td ></td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td ><input type="checkbox"/>暴力行为、抢劫责任条款</td>
+								<td ></td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td ><input type="checkbox"/>锅炉爆炸责任条款</td>
+								<td ></td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td ><input type="checkbox"/>罢工、暴动、民众骚乱及恶意破坏条款</td>
+								<td ></td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td ><input type="checkbox"/>建筑物改变条款</td>
+								<td ></td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td ><input type="checkbox"/>急救费用条款</td>
+								<td ></td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td ><input type="checkbox"/>交叉责任条款</td>
+								<td ></td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td ><input type="checkbox"/>消防队与水损条款</td>
+								<td ></td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td ><input type="checkbox"/>委托公估人条款</td>
+								<td ></td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td colspan="5">保险期间 &nbsp;&nbsp;&nbsp;&nbsp;  12个月，自&nbsp;&nbsp;&nbsp;&nbsp;    年 &nbsp;&nbsp;&nbsp;&nbsp; 月 &nbsp;&nbsp;&nbsp;&nbsp; 日零时起，至 &nbsp;&nbsp;&nbsp;&nbsp;   年 &nbsp;&nbsp;&nbsp;&nbsp; 月  &nbsp;&nbsp;&nbsp;&nbsp; 日二十四时止。</td>	
+							</tr>
+							<tr>
+								<td >总保险费（大写）</td>
+								<td > （小写） </td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td >保险费交付日期</td>
+								<td ></td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td >保险合同争议<br/>解决方式选择</td>
+								<td ><input type="checkbox"/>提交          仲裁委员会仲裁；     R诉讼。</td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td >特别约定</td>
+								<td > 详见附件2特别约定。</td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+							<tr>
+								<td  colspan="5">&nbsp;&nbsp;&nbsp;&nbsp; 投保人声明：保险人已将本保险合同条款及其附加险条款（若投保附加险）内容向本人做了明确说明，并对其中免除保险人责任的条款（包括但不限于责任免除、投保人被保险人义务、赔偿处理、其它事项等）以及本保险合同付款约定和特别约定的内容向本人做了明确说明，本人已充分理解并接受上述内容，同意以此作为订立保险合同的依据，自愿投保本保险。</td>
+							</tr>
+							<tr>
+								<td ></td>
+								<td ></td>
+								<td >投保人（签章）</td>
+								<td ></td>
+								<td ></td>	
+							</tr>
+														<tr>
+								<td ></td>
+								<td ></td>
+								<td ></td>
+								<td >   年 &nbsp;&nbsp;&nbsp;&nbsp;  月  &nbsp;&nbsp;&nbsp;&nbsp;  日</td>
+								<td ></td>	
+						</table>
+							<p style="margin-left: 60px;"> 承保性质：&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox"/>新保&nbsp;&nbsp;&nbsp;&nbsp;  <input type="checkbox"/>续保 &nbsp;&nbsp;&nbsp;&nbsp; 业务员/代理人代码：  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       业务员/代理人姓名：</p>
+							<button type="submit" class="btn btn-primary btn-sm pull-right">提交</button>
+</form>				
+				</div>
+</@layout>

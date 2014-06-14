@@ -1,27 +1,66 @@
 <#include "/user/_layout.html"/>
 <@layout>
+
 				<div id="left-content">
 						
 					<div class="well well-sm">
-					<form class="well well-sm form-inline" action="/user/bdAdd?opt=add" method="post">
+					<form class="well well-sm form-inline" action="/baodan/create" method="post">
 						<span>选择投保单类型：</span>
-						<select class="form-control">
-						  <option>财产保险</option>
-						  <option>公共责任险</option>
+						<select class="form-control" id="sel">
 						</select>
-						<select class="form-control" name="type">
-						  <option value="1">综合险</option>
-						  <option value="zrx">责任险</option>
+						<select class="form-control" name="assuranceClassCode" id="sel2">
 						</select>
-						<input type="hidden" name="step" value="1"/>
 						<button type="submit" class="btn btn-primary btn-sm">创建</button>
 					</form>
 					</div>
-					<!-- 保单表单区域宏定义 引入表单宏 传递表单参数，动态加载表单 -->
-					<#include "/user/_bd-form.html"/>
 					<div>
 						<a href="#">返回保单受理通知</a>
 					</div>
 					
 				</div>
+				
+<script>
+	var ojson=[
+			{id:1,name:'----财产保险----',child:[{id:"3",name:"----综合险----"}]},	
+			{id:2,name:'----公共责任险----',child:[{id:"4",name:"----责任险----"}]},	
+		];
+	
+	var select = document.getElementById("sel");
+	var selOption1 = document.createElement("option");	
+		selOption1.value = "0";	
+		selOption1.innerHTML = "----请选择-----";
+		select.appendChild(selOption1);
+	for(var i=0; i<ojson.length;i++){
+		var selOption = document.createElement("option");	
+		selOption.value = ojson[i].id;	
+		selOption.innerHTML = ojson[i].name;	
+		select.appendChild(selOption);	
+	}	
+	
+	var select2 = document.getElementById("sel2");	
+	var selOption11 = document.createElement("option");	
+		selOption11.value = "0";	
+		selOption11.innerHTML = "----请选择-----";	
+	select2.appendChild(selOption11);	
+	
+	select.onchange = function (){	
+			
+		var objs = document.getElementById("sel2");	
+		objs.options.length = 1;	
+				
+			var olen = ojson.length;	
+			for(var i=0;i<olen;i++){	
+				if(this.value == ojson[i].id){	
+					var ochild = ojson[i].child;	
+					var ochildlen = ochild.length;	
+					for(var j=0;j<ochildlen;j++){	
+						var childOption = document.createElement("option");	
+						childOption.value = ochild[j].id;	
+						childOption.innerHTML = ochild[j].name;	
+						objs.appendChild(childOption);	
+					}	
+				}	
+			}	
+	}	
+</script> 				
 </@layout>

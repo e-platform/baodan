@@ -1,14 +1,15 @@
-package com.demo.common;
+package com.gdbd.common;
 
-import com.demo.blog.Blog;
-import com.demo.blog.BlogController;
 import com.gdbd.AdminController;
 import com.gdbd.Baodan;
-import com.gdbd.FormItem;
+import com.gdbd.BaodanController;
 import com.gdbd.LoginController;
 import com.gdbd.Message;
+import com.gdbd.MessageController;
 import com.gdbd.User;
 import com.gdbd.UserController;
+import com.gdbd.ZerenxianBaodanController;
+import com.gdbd.ZonghexianBaodanController;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
@@ -22,7 +23,7 @@ import com.jfinal.plugin.c3p0.C3p0Plugin;
 /**
  * API引导式配置
  */
-public class DemoConfig extends JFinalConfig {
+public class BDConfig extends JFinalConfig {
 	
 	/**
 	 * 配置常量
@@ -40,9 +41,12 @@ public class DemoConfig extends JFinalConfig {
 	@Override
 	public void configRoute(Routes me) {
 		me.add("/", LoginController.class);
-		me.add("/blog", BlogController.class);
 		me.add("/user", UserController.class);
+		me.add("/message", MessageController.class);
 		me.add("/admin", AdminController.class);
+		me.add("/baodan", BaodanController.class);
+		me.add("/zrxbaodan", ZerenxianBaodanController.class);
+		me.add("/zhxbaodan", ZonghexianBaodanController.class);
 	}
 	
 	/**
@@ -57,11 +61,9 @@ public class DemoConfig extends JFinalConfig {
 		// 配置ActiveRecord插件
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(c3p0Plugin);
 		me.add(arp);
-		arp.addMapping("blog", Blog.class);	// 映射blog 表到 Blog模型
 		arp.addMapping("user", User.class);
 		arp.addMapping("message", Message.class);
 		arp.addMapping("baodan", Baodan.class);
-		arp.addMapping("form_item", FormItem.class);
 	}
 	
 	/**

@@ -1,125 +1,21 @@
 package com.gdbd;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import com.jfinal.aop.Before;
 import com.jfinal.ext.interceptor.SessionInViewInterceptor;
-import com.jfinal.plugin.activerecord.Page;
 
 
 @Before({BDInterceptor.class, SessionInViewInterceptor.class})
 public class UserController extends BaseController{
 	
-	public static final int MESSAGE_TYPE_BDSL = 1; //保单受理通知
-	public static final int MESSAGE_TYPE_LPSL = 2; //理赔受理通知
-	public static final int MESSAGE_TYPE_SYS = 3;  //系统通知
-	
-//	public static HashMap<String,Integer> BAODAN_TYPE_MAP = new HashMap<String,Integer>();
-//	static{
-//		BAODAN_TYPE_MAP.put("zhx", 1);
-//	}
-	
-	public static HashMap<String,Integer> stepMap = new HashMap<String,Integer>();
-	static{
-		stepMap.put("1", 3);//1综合险表单总填写数量
-	}
-	
 	private static SimpleDateFormat dateformat = new SimpleDateFormat("yyyyMMddHHmmss");
 	
-	@Override
 	public void index() {
-//		setAttr("blogPage", Blog.dao.paginate(getParaToInt(0, 1), 10));
-//		render("/user/index.html");
-		redirect("/user/message");
+		redirect("/message/index");
 	}
-	
-	@Override
-	public void add() {
-	}
-	
-	@Override
-	public void save() {
-//		getModel(Blog.class).save();
-//		redirect("/blog");
-	}
-	
-	@Override
-	public void edit() {
-//		setAttr("blog", Blog.dao.findById(getParaToInt()));
-	}
-	
-	@Override
-	public void update() {
-//		getModel(Blog.class).update();
-//		redirect("/blog");
-	}
-	
-	@Override
-	public void delete() {
-//		Blog.dao.deleteById(getParaToInt());
-//		redirect("/blog");
-	}
-	
-	/** method: 
-	 * 		1、message() //我的消息首页
-	 * 		2、messageList()	//消息列表
-	 * 		3、messageDetail()	//消息详情
-	 * 		4、bdQuery()	//保单查询
-	 * 		5、bdView()	//保单预览
-	 * 		6、bdEdit()	//保单编辑
-	 * 		7、bdUpdate()	//保单更新
-	 * 		8、bdAdd()	//保单新增
-	 * 		9、bdSave()	//保单保存
-	 * 		10、bdAttachmentUpload()	//保单附件上传
-	 * 		11、bdAttachmentDel()	//保单附件删除
-	 * 		12、lpAdd()	//申请理赔
-	 * 		13、lpSave()	//理赔保存
-	 * 		14、lpAttachmentUpload()	//理赔附件上传
-	 * */
-	
-	public void message(){
-		User user = this.getSessionAttr("user");
-		int top = 5; //前多少条通知用于首页显示
-		//保单受理通知
-		List<Message> bdslMsgs = Message.dao.paginate(1, top, "select *", "from message where type=? and user_id=? order by create_time desc", MESSAGE_TYPE_BDSL, user.getInt("id")).getList();
-		//理赔受理通知
-		List<Message> lpslMsgs = Message.dao.paginate(1, top, "select *", "from message where type=? and user_id=? order by create_time desc", MESSAGE_TYPE_LPSL, user.getInt("id")).getList();
-		//系统通知
-		List<Message> sysMsgs = Message.dao.paginate(1, top, "select *", "from message where type=? and user_id=? order by create_time desc", MESSAGE_TYPE_SYS, user.getInt("id")).getList();
-		
-		setAttr("bdslMsgs", bdslMsgs);
-		setAttr("lpslMsgs",lpslMsgs);
-		setAttr("sysMsgs", sysMsgs);
-		
-		render("/user/message.html");
-	}
-	
-	public void messageList(){
-		int type = Integer.parseInt(getPara("type", "1"));
-		User user = this.getSessionAttr("user");
-		int pageNumber = getParaToInt("pageSize", 1); 
-		int pageSize = getParaToInt("pageSize", 10);
-		//通知分页列表
-		Page<Message> pageMsgs = Message.dao.paginate(pageNumber, pageSize, "select *", "from message where type=? and user_id=? order by create_time desc", type, user.getInt("id"));
-		
-		setAttr("pageMsgs", pageMsgs);
-		
-		render("/user/message-list.html");
-	}
-	
-	public void messageDetail(){
-		int msgId = getParaToInt("msgid");
-		Message msg = Message.dao.findById(msgId);
-		setAttr("msg", msg);
-		render("/user/message-detail.html");
-	}
-	
-	public void bdQuery(){
+
+	/*public void bdQuery(){
 		User user = this.getSessionAttr("user");
 		int pageNumber = getParaToInt("pageSize", 1); 
 		int pageSize = getParaToInt("pageSize", 10);
@@ -176,8 +72,6 @@ public class UserController extends BaseController{
 			formItems.get(i).put("id", ids[i])
 			.update();
 		}
-		
-		
 		
 		//判断是否所有表单都已填写
 		if(getParaToInt("step") < stepMap.get(getPara("type")).intValue()){
@@ -261,7 +155,7 @@ public class UserController extends BaseController{
 		Baodan.dao.deleteById(getParaToInt("baodanId"));
 		redirect("/user/bd-list.html");
 	}
-	/** form表单中提取FormItem实体 */
+	*//** form表单中提取FormItem实体 *//*
 	private List<FormItem> genFormItems(Map<String,String[]> map) {
 		List<FormItem> formItems = new ArrayList<FormItem>();
 		int formItemsSize = 1;//多值表单项，实体的个数
@@ -299,7 +193,7 @@ public class UserController extends BaseController{
 			}
 		}
 		return formItems;
-	}
+	}*/
 }
 
 
