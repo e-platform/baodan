@@ -11,10 +11,6 @@ import com.jfinal.plugin.activerecord.Page;
 @Before({BDInterceptor.class, SessionInViewInterceptor.class})
 public class MessageController extends BaseController{
 	
-	public static final int MESSAGE_TYPE_BDSL = 1; //保单受理通知
-	public static final int MESSAGE_TYPE_LPSL = 2; //理赔受理通知
-	public static final int MESSAGE_TYPE_SYS = 3;  //系统通知
-	
 	private static SimpleDateFormat dateformat = new SimpleDateFormat("yyyyMMddHHmmss");
 	
 	/** 消息首页 */
@@ -22,11 +18,11 @@ public class MessageController extends BaseController{
 		User user = this.getSessionAttr("user");
 		int top = 5; //前多少条通知用于首页显示
 		//保单受理通知
-		List<Message> bdslMsgs = Message.dao.paginate(1, top, "select *", "from message where type=? and user_id=? order by create_time desc", MESSAGE_TYPE_BDSL, user.getInt("id")).getList();
+		List<Message> bdslMsgs = Message.dao.paginate(1, top, "select *", "from message where type=? and user_id=? order by create_time desc", Message.MESSAGE_TYPE_BDSL, user.getInt("id")).getList();
 		//理赔受理通知
-		List<Message> lpslMsgs = Message.dao.paginate(1, top, "select *", "from message where type=? and user_id=? order by create_time desc", MESSAGE_TYPE_LPSL, user.getInt("id")).getList();
+		List<Message> lpslMsgs = Message.dao.paginate(1, top, "select *", "from message where type=? and user_id=? order by create_time desc", Message.MESSAGE_TYPE_LPSL, user.getInt("id")).getList();
 		//系统通知
-		List<Message> sysMsgs = Message.dao.paginate(1, top, "select *", "from message where type=? and user_id=? order by create_time desc", MESSAGE_TYPE_SYS, user.getInt("id")).getList();
+		List<Message> sysMsgs = Message.dao.paginate(1, top, "select *", "from message where type=? and user_id=? order by create_time desc", Message.MESSAGE_TYPE_SYS, user.getInt("id")).getList();
 		
 		setAttr("bdslMsgs", bdslMsgs);
 		setAttr("lpslMsgs",lpslMsgs);
@@ -34,25 +30,6 @@ public class MessageController extends BaseController{
 		
 		setAttr("activeMenu", Constants.ACTIVE_MENU_MESSAGE);
 		render("/user/message.html");
-	}
-	
-	/** 管理员消息首页 */
-	public void indexAdmin(){
-		User user = this.getSessionAttr("user");
-		int top = 5; //前多少条通知用于首页显示
-		//保单受理通知
-		List<Message> bdslMsgs = Message.dao.paginate(1, top, "select *", "from message where type=? and user_id=? order by create_time desc", MESSAGE_TYPE_BDSL, user.getInt("id")).getList();
-		//理赔受理通知
-		List<Message> lpslMsgs = Message.dao.paginate(1, top, "select *", "from message where type=? and user_id=? order by create_time desc", MESSAGE_TYPE_LPSL, user.getInt("id")).getList();
-		//系统通知
-		List<Message> sysMsgs = Message.dao.paginate(1, top, "select *", "from message where type=? and user_id=? order by create_time desc", MESSAGE_TYPE_SYS, user.getInt("id")).getList();
-		
-		setAttr("bdslMsgs", bdslMsgs);
-		setAttr("lpslMsgs",lpslMsgs);
-		setAttr("sysMsgs", sysMsgs);
-		
-		setAttr("activeMenu", Constants.ACTIVE_MENU_ADMIN_MESSAGE);
-		render("/admin/message.html");
 	}
 	
 	/** 消息列表 */

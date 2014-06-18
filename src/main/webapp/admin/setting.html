@@ -1,0 +1,123 @@
+<#include "/admin/_layout.html"/>
+<@layout>
+<style>
+.unread{
+	color: black;
+}
+.read{
+	color:#A09D9D;
+}
+#class-bd span{
+color: rgba(74, 126, 204, 0.93);
+font-weight: bold;
+}
+</style>
+				<div id="left-content">
+					<div id="class-bd">
+						<span>保单类型编辑</span>
+						<table class="table table-striped">
+							<thead>
+							<tr>
+								<th>大类</th>
+								<th>子类</th>
+								<th>保单正文</th>
+								<th>附加条款</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td rowspan="3">
+									财产保险
+								</td>
+								<td rowspan="3">
+									综合险
+								</td>
+								<td>
+									主保单
+								</td>
+								<td>
+									附件1	<a href="#">删除</a>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									资产明细清单	
+								</td>
+								<td>
+									附件2	<a href="#">删除</a>
+								</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>
+									<a href="#">增加文档...</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td rowspan="3">
+									公共险
+								</td>
+								<td rowspan="3">
+									责任险
+								</td>
+								<td>
+									主保单
+								</td>
+								<td>
+									附件1	<a href="#">删除</a>
+								</td>
+							</tr>
+							<tr>
+								<td>
+										
+								</td>
+								<td>
+									附件2	<a href="#">删除</a>
+								</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>
+									<a href="#">增加文档...</a>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+					<div id="class-bd">
+						<span>用户管理</span>
+						<table class="table table-striped">
+							<thead>
+							<tr>
+								<th>用户名</th>
+								<th>权限</th>
+								<th>描述</th>
+								<th>操作</th>
+							</tr>
+							</thead>
+							<tbody>
+							<#list users.list as user>
+							<tr>
+								<td>${user.name}</td>
+								<td>${user.role}</td>
+								<td>${user.phone}</td>
+								<td>
+									<a href="${basePath}/admin/settingEditUser?userId=${user.id}">编辑</a>
+									<a href="${basePath}/admin/settingRemoveUser?userId=${user.id}">删除</a>
+								</td>
+							</tr>
+							</#list>
+							</tbody>
+						</table>
+						<div>
+							<ul class="pager">
+							  <li><a href="#">首页</a></li>
+							  <li><a href="#">下一页</a></li>
+							  <li><a href="#">上一页</a></li>
+							  <li><a href="#">末页</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+</@layout>

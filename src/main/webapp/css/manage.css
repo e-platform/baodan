@@ -5,7 +5,7 @@ img,fieldset,abbr,acronym{border:0}
 ol,ul{list-style:none}
 table{border-collapse:collapse;border-spacing:0}
 caption,th,td{text-align:left;vertical-align:top}
-body{background:#FFF url(../images/bg.gif) repeat-x scroll 0 0;color:#333;font-family:Arial,Helvetica,sans-serif;font-size:11px;width:1000px;margin:0 auto !important}
+/*body{background:#FFF url(../images/bg.gif) repeat-x scroll 0 0;color:#333;font-family:Arial,Helvetica,sans-serif;font-size:11px;width:1000px;margin:0 auto !important}*/
 .clear{clear:both}
 .red{color:#f00}
 a{color:#047DB6;text-decoration:underline}

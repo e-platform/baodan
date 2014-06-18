@@ -26,6 +26,12 @@ public class ZerenxianBaodanController extends BaseController{
 		
 	}
 	
+	/** 主保单查看 */
+	public void majorFormView(){
+		setAttr("activeMenu", Constants.ACTIVE_MENU_BDQUERY);
+		render("/user/zerenxian/major-form-view.html");
+	}
+	
 	/** 主保单更新 */
 	public void majorFormUpdate(){
 		
@@ -46,5 +52,11 @@ public class ZerenxianBaodanController extends BaseController{
 	/** 附加险更新 */
 	public void attachAssuranceUpdate(){
 		
+	}
+	
+	/** 保单受理 */
+	public void approve(){
+		setAttr("baodanId", getPara("baodanId"));
+		render("/admin/zerenxian/approve_major_form.html");
 	}
 }

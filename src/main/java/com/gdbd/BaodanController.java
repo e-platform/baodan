@@ -2,6 +2,7 @@ package com.gdbd;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 
 import com.jfinal.aop.Before;
 import com.jfinal.ext.interceptor.SessionInViewInterceptor;
@@ -17,6 +18,13 @@ import com.jfinal.upload.UploadFile;
 public class BaodanController extends BaseController{
 
 	private static SimpleDateFormat dateformat = new SimpleDateFormat("yyyyMMddHHmmss");
+	
+	/** 保单中文类型对照表 */
+	static HashMap<String,String> codeNameMap = new HashMap<String,String>();
+	{
+		codeNameMap.put(AssuranceClass.CLASS_ZHX+"", "财产综合险");
+		codeNameMap.put(AssuranceClass.CLASS_ZRX+"", "公共责任险");
+	}
 	
 	public static final String SESSION_CREATEBAODAN_assuranceClassCode = "assuranceClassCode";	//创建保单类型
 	/** 附件上传 */
@@ -56,16 +64,38 @@ public class BaodanController extends BaseController{
 		//TODO:是：生成销售确认书，委托书，相关附件保存，保单创建完成
 		Baodan baodan = new Baodan();
 		baodan.set("user_id", ((User)getSessionAttr("user")).getInt("id"));
-		baodan.set("type", Integer.parseInt((String)getSessionAttr(SESSION_CREATEBAODAN_assuranceClassCode)));
-		baodan.set("name", "");
-		String code = ((User)getSessionAttr("user")).getStr("name") + "-保单-"
-			+ Integer.parseInt((String)getSessionAttr(SESSION_CREATEBAODAN_assuranceClassCode))+"-" 
+		baodan.set("assurance_class_id", Integer.parseInt((String)getSessionAttr(SESSION_CREATEBAODAN_assuranceClassCode)));
+		
+		String name = codeNameMap.get(getSessionAttr(SESSION_CREATEBAODAN_assuranceClassCode)) + "-投保单";
+		baodan.set("name", name);
+		String code =  getSessionAttr(SESSION_CREATEBAODAN_assuranceClassCode)+"-" 
 			+ dateformat.format(new Date());
 		baodan.set("code", code);
 		baodan.set("status", Baodan.STATUS_SUBMIT);
 		baodan.set("sbjine", 10000);
 		baodan.set("record_status", Constants.RECORD_STATUS_COMMON);
 		baodan.save();
+		
+		//------------发送后台待受理消息--------------//
+		Message message = new Message();
+		StringBuffer title = new StringBuffer();
+		title.append("用户")
+			.append(((User)getSessionAttr("user")).getStr("name"))
+			.append("于")
+			.append(new SimpleDateFormat("yyyy年mm月dd日").format(new Date()))
+			.append("提交的“")
+			.append(baodan.getStr("name"))
+			.append("”等待受理");
+		
+		message.set("title", title.toString());
+		message.set("read_flag",Message.MESSAGE_UNREAD);
+		message.set("type", Message.MESSAGE_TYPE_BDSL);
+		message.set("user_id", 0);
+		message.set("content", baodan.get("id").toString());
+		message.set("record_status",Constants.RECORD_STATUS_COMMON);
+		message.save();
+		//------------发送后台待受理消息--------------//
+		
 		redirect("/baodan/bdQuery");
 	}
 	

@@ -23,6 +23,12 @@ public class ZonghexianBaodanController extends BaseController{
 		redirect("/zhxbaodan/assetsAdd");
 	}
 	
+	/** 主保单查看 */
+	public void majorFormView(){
+		setAttr("activeMenu", Constants.ACTIVE_MENU_BDQUERY);
+		render("/user/zonghexian/major-form-view.html");
+	}
+	
 	/** 主保单修改 */
 	public void majorFormEdit(){
 		
@@ -69,5 +75,16 @@ public class ZonghexianBaodanController extends BaseController{
 	/** 附加条款更新 */
 	public void attachClauseUpdate(){
 		
+	}
+	
+	/** 保单受理 */
+	public void approve(){
+		setAttr("baodanId", getPara("baodanId"));
+		//formId 1:主保单视图 ，  2：资产明细视图
+		if(getPara("formId", "1").equals("1")){
+			render("/admin/zonghexian/approve-major-form.html");
+		}else{
+			render("/admin/zonghexian/approve-assets.html");
+		}
 	}
 }

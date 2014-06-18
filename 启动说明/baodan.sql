@@ -8,8 +8,9 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `account` varchar(200) NOT NULL,
   `passwd` varchar(200) NOT NULL,
-  `record_status` int(2) NOT NULL comment '记录状态 0：正常 1：已删除',
-  `login_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `record_status` int(2) comment '记录状态 0：正常 1：已删除',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `login_time` timestamp,
   `role` int(2) NOT NULL comment '角色 0：普通用户  1：系统管理员',
   `name` varchar(200) NOT NULL comment '名称', 
   `address` varchar(200) comment '地址',
@@ -17,18 +18,18 @@ CREATE TABLE `user` (
   `zipcode` varchar(20) comment '邮编',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-INSERT INTO `user` VALUES (1, 'admin', 'admin', 0, null,2,'超级管理员','','','');
-INSERT INTO `user` VALUES (2, 'xingzl', 'xingzl', 0, null,1,'管理员','','','');
-INSERT INTO `user` VALUES (3, 'zhangsan', 'zhangsan', 0, null,0,'普通用户','','','');
+INSERT INTO `user` VALUES (1, 'admin', 'admin', 0, null,null,2,'超级管理员','','','');
+INSERT INTO `user` VALUES (2, 'xingzl', 'xingzl', 0, null,null,1,'管理员','','','');
+INSERT INTO `user` VALUES (3, 'zhangsan', 'zhangsan', 0, null,null,0,'张三','','','');
 
 /*消息*/
 CREATE TABLE `message` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`title` varchar(200) NOT NULL,
-	`content` varchar(2000) NOT NULL,
-	`read_flag` int(2) NOT NULL,
+	`content` varchar(2000),
+	`read_flag` int(2) NOT NULL comment '已读标识0：未读， 1：已读',
 	`record_status` int(2) NOT NULL comment '记录状态 0：正常 1：已删除',
-	`type` int(2) NOT NULL,
+	`type` int(2) NOT NULL comment '消息分类1:保单受理通知,2:理赔受理通知, 3:系统通知',
 	`user_id` int(11) NOT NULL,
 	`create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -46,7 +47,8 @@ CREATE TABLE `baodan`(
 	`exp_date` timestamp NOT NULL,
 	`user_id` int(20) NOT NULL,/*投保人ID*/
 	`record_status` int(2) NOT NULL comment '记录状态 0：正常 1：已删除',
-	`assurance_class_id` int(11) NOT NULL,/*险种*/
+	`assurance_class_id` int(11) NOT NULL comment '险种',
+	`reason` varchar(1000) COMMENT '审批不通过时填写的理由',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 

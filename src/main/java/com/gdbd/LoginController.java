@@ -6,11 +6,13 @@ import com.jfinal.core.Controller;
 
 public class LoginController extends Controller {
 	public void index() {
+		setAttr("basePath", getRequest().getContextPath());
 		render("login.html");
 	}
 	
 	/** 登录 */
 	public void login(){
+		setAttr("basePath", getRequest().getContextPath());
 		String account = getPara("account");
 		String passwd = getPara("passwd");
 		System.out.println(account + ":" + passwd);
@@ -30,6 +32,13 @@ public class LoginController extends Controller {
 		}else{
 			render("/login.html");
 		}
+	}
+	
+	/** 注销登录 */
+	public void logout(){
+		setAttr("basePath", getRequest().getContextPath());
+		removeSessionAttr("user");
+		redirect(getRequest().getContextPath() + "/login");
 	}
 }
 

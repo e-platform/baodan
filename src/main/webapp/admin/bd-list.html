@@ -1,4 +1,4 @@
-<#include "/user/_layout.html"/>
+<#include "/admin/_layout.html"/>
 <@layout>
 				<div id="left-content">
 						
@@ -33,12 +33,28 @@
 						  <tbody>
 						 	<#list baodans.list as baodan>
 						    <tr>
-						      <td><a href="/baodan/bdView?baodanId=${baodan.id}">${baodan.code}</a></td>
+						      <td><a href="${basePath}/baodan/bdView?baodanId=${baodan.id}">${baodan.code}</a></td>
 						      <td>${baodan.name}</td>
-						      <td>${baodan.status}</td>
+						      <td>
+						      <#switch baodan.status>
+						      	<#case 1>
+									<span>申请中</span>
+									<#break>
+						      	<#case 2>
+									<span>有效</span>
+									<#break>
+						      	<#case 3>
+									<span>申请失败</span>
+									<#break>
+								</#switch>
+						      </td>
 						      <td>${baodan.sbjine}</td>
 						      <td>${baodan.effDate!}-${baodan.expDate!}</td>
-						      <td><a href="/baodan/bdEdit?baodanId=${baodan.id}">编辑</a>&nbsp;<a href="/baodan/bdDelete?baodanId=${baodan.id}">删除</a></td>
+						      <td>
+						      <#if baodan.status == 1>
+						      <a href="${basePath}/admin/approveBd?baodanId=${baodan.id}">受理</a>
+						      </#if>
+						      </td>
 						    </tr>
 						    </#list>
 						  </tbody>

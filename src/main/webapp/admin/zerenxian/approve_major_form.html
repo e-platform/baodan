@@ -1,10 +1,10 @@
-<#include "/user/_layout.html"/>
+<#include "/admin/_layout.html"/>
 <@layout>
 
 				<div id="left-content">
 						
 					<div class="well well-sm">
-						<span>选择投保单类型：财产保险>公共责任险</span>
+						<span>财产保险>公共责任险</span>
 					</div>
 					
 <style type="text/css">
@@ -17,7 +17,7 @@ border-bottom-width: 1px;
 width:200px;
 }
 </style>
-<form class="well form-inline" action='${basePath}/zrxbaodan/majorFormSave' method="post">
+<form class="well form-inline" action='${basePath}/admin/approveBdSave?baodanId=${baodanId}' method="post">
 						<p style="margin-left: 6px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;尊敬的投保人：请您在投保前务必详细阅读相关保险条款，特别注意责任免除、投保人及被保险人义务、赔偿处理等内容，据实回答保险人就投保事项提出的相关询问，并用蓝色或黑色墨水笔如实填写投保单。投保后相关内容若发生变动，请及时通知保险人。</p>
 						<table class="table table-striped table-bordered table-condensed" vertical-align:middle;" >
 							<tr>
@@ -228,6 +228,18 @@ width:200px;
 								<td ></td>	
 						</table>
 							<p style="margin-left: 60px;"> 承保性质：&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox"/>新保&nbsp;&nbsp;&nbsp;&nbsp;  <input type="checkbox"/>续保 &nbsp;&nbsp;&nbsp;&nbsp; 业务员/代理人代码：  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       业务员/代理人姓名：</p>
+							
+							<div class="well well-sm">
+								<h6><strong>受理意见</strong></h6>
+								<ul class="list-group">
+								  <li class="list-group-item">
+								  	<input type="radio" name="approve_result" value="0"/> 不同意受理。
+								  	<lable> 请填写理由：</lable><input type="text" name="reason" value=""/>
+								  </li>
+								  <li class="list-group-item"><input type="radio" name="approve_result" value="1"/> 同意受理。</li>
+								</ul>
+							</div>
+							<input type="hidden" name="baodanId" value="${baodanId}"/>
 							<button type="submit" class="btn btn-primary btn-sm pull-right">提交</button>
 </form>				
 				</div>

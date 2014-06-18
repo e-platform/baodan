@@ -62,7 +62,7 @@
 		        <stopKey>stop</stopKey>
 		        <stopPort>5599</stopPort>
 		        <webAppConfig>
-		            <contextPath>/</contextPath>
+		            <contextPath>/baodan</contextPath>
 		        </webAppConfig>
 		        <scanIntervalSeconds>5</scanIntervalSeconds>
 		        <connectors>

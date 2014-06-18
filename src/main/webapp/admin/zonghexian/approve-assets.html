@@ -1,10 +1,14 @@
-<#include "/user/_layout.html"/>
+<#include "/admin/_layout.html"/>
 <@layout>
 
 				<div id="left-content">
 						
 					<div class="well well-sm">
-						<span>选择投保单类型：财产保险>综合险>资产明细清单</span>
+						<span>财产保险>综合险</span>
+						<ul class="nav nav-tabs nav-justified">
+							<li><a href="${basePath}/zhxbaodan/approve?formId=1&baodanId=${baodanId}">主保单</a></li>
+							<li class="active"><a href="${basePath}/zhxbaodan/approve?formId=2&baodanId=${baodanId}">资产明细</a></li>
+						</ul>
 					</div>
 					
 <style type="text/css">
@@ -181,7 +185,6 @@ width:200px;
 								<td ></td>	
 							</tr>
 						</table>
-						<button type="submit" class="btn btn-primary btn-sm pull-right">下一步</button>
 				</div>
 </form>				
 </@layout>
